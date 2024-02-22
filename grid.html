@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <style>
+          * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+            .main-container{
+                display: grid;
+                width: 90vw;
+                height: 80vh;
+                margin: 10px auto;
+                padding: 5px;
+                gap: 10px 0;
+                grid-template-rows: 1fr 2fr 2fr 2fr 2fr;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-areas: "left-grid menu-grid menu-grid"
+                "left-grid images-grid images-grid"
+                "left-grid images-grid images-grid"
+                "left-grid images-grid images-grid"
+                "left-grid images-grid images-grid";
+            }
+            h1{
+                text-align: center;
+            }
+            .left-colum{
+                grid-area: left-grid;
+            }
+            .menu-bar{
+                grid-area:menu-grid;
+                background-color:  rgb(175, 164, 94);
+                padding-top: 20px ;
+                color: antiquewhite;
+
+
+            }
+            .imgsDiv{
+                grid-area:images-grid
+            }
+            ul{
+                display: flex;
+                justify-content: space-around;
+                list-style: none;
+
+                
+            }
+            .left-menu{
+                padding: 10px;
+                margin-top: 10px;
+            }
+            h3{
+                margin-bottom: 20px;
+                margin-top: 20px;
+                color: darkgrey;
+            }
+            .left-menu p{
+                color: lightgray;
+
+            }
+            .icons{
+                display: flex;
+                justify-content: space-between;
+                width: 10%;
+                margin-top: 50px;
+                font-size: 20px;
+                color: lightgray;
+                margin-bottom: 50px;
+            }
+            .left-p{
+                color: lightgrey;
+                width: 40%;
+            }
+            .left-imgs img{
+                width: 100px;
+                height: 100px;
+            }
+            .imgsDiv img{
+                width: 193px;
+                height: 200px;
+                padding: 0;
+            }
+            
+
+        </style>
+    </head>
+    <body>
+        <div class="main-container">
+            <section class="left-colum">
+                <h1>ITI Mansora</h1>
+                
+                    <h3>Proto info</h3>
+                    <aside class="left-menu">
+                    <p>About Us</p>
+                    <p> Blog</p>
+                    <p>By this THeam</p>
+                </aside>
+                <aside class="icons">
+                    <p>🏐</p>
+                    <p>🐦‍⬛</p>
+                    <p>❤️</p>
+                </aside>
+                <h3>A Text Wedge</h3>
+                <aside class="left-p">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. .</p>
+                </aside>
+                <h3>Fiker</h3>
+                <aside class="left-imgs">
+                    <img src="1.jpg"/>
+                    <img src="2.jpg"/>
+                    <img src="3.jpg"/>
+                    <img src="4.jpg"/>
+                    <img src="5.jpg"/>
+                    <img src="3.jpg"/>
+                </aside>
+                
+
+            </section>
+            <div class="menu-bar">
+                <ul>
+                    <li>All</li>
+                    <li>About</li>
+                    <li>Home</li>
+                    <li>contact us</li>
+                </ul>
+
+            </div>
+            <div class="imgsDiv">
+                    <img src="1.jpg"/>
+                    <img src="2.jpg"/>
+                    <img src="3.jpg"/>
+                    <img src="4.jpg"/>
+                    <img src="5.jpg"/>
+                    <img src="3.jpg"/>
+                    <img src="1.jpg"/>
+                    <img src="2.jpg"/>
+                    <img src="3.jpg"/>
+                    <img src="4.jpg"/>
+                    <img src="5.jpg"/>
+                    <img src="3.jpg"/>
+                
+            </div>
+        </div>
+    </body>
+</html>

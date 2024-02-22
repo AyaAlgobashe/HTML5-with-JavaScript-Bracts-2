@@ -1,0 +1,123 @@
+<html>
+
+<head>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            border: 2px solid red;
+            padding: 20px;
+            width: 80vw;
+            margin: 20px auto;
+            border-radius: 10px;
+        }
+
+        .buttons {
+            border: 2px solid #000000;
+            border-radius: 10px;
+            padding: 20px;
+
+        }
+
+        button {
+            display: block;
+            padding: 10px;
+            border-color: blue;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .vidio-div {
+            border: 2px solid #000000;
+            border-radius: 10px;
+            padding: 20px;
+
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <aside class="buttons">
+            <button>Viduo 1</button>
+            <button>Viduo 2</button>
+            <button>Viduo 3</button>
+            <button>Viduo 4</button>
+            <button>Viduo 5</button>
+            <button>Viduo 6</button>
+            <button>Viduo 7</button>
+            <button>Viduo 8</button>
+            <button>Viduo 9</button>
+
+
+        </aside>
+        <aside>
+            <div class="vidio-div">
+                <video src="Video/universe.mp4" id="myvideo" width="400" height="400" autoplay muted />
+            </div>
+
+        </aside>
+    </div>
+    <script>
+     let video = document.getElementById('myvideo');
+     video.addEventListener('click', function () {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+
+        video.addEventListener('dblclick', function (e) {
+            video.requestFullscreen();
+            e.preventDefault();
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+
+    
+
+       
+
+        var buttons = document.querySelectorAll('.buttons button');
+
+        buttons[0].addEventListener('click', function () {
+            video.src = "Video/video2.mp4";
+            video.load(); 
+            video.play(); 
+        });
+        buttons[1].addEventListener('click', function () {
+            video.src = "Video/universe.mp4";
+            video.load(); 
+            video.play(); 
+        });
+        buttons[2].addEventListener('click', function () {
+            video.src = "Video/video2.mp4";
+            video.load(); 
+            video.play(); 
+        });
+        buttons[3].addEventListener('click', function () {
+            video.src = "Video/universe.mp4";
+            video.load(); 
+            video.play(); 
+        });
+        buttons[4].addEventListener('click', function () {
+            video.src = "Video/video2.mp4";
+            video.load(); 
+            video.play(); 
+        });
+    </script>
+</body>
+
+</html>

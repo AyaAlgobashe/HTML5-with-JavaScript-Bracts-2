@@ -1,0 +1,84 @@
+<html>
+
+<head>
+
+    <title>Canve</title>
+    <style>
+        .canvas{
+            margin-left: 300px;
+            margin-top: 100px;
+            
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <canvas class="canvas" width="700" height="400"></canvas>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const rectangle = {
+                x: 100,
+                y: 100,
+                width: 500,
+                height: 250
+            };
+            const ball = {
+
+                radius: 20,
+                speedX: 2,
+                speedY: 1,
+                x: 150,
+                y: 150,
+            };
+            const canvas = document.querySelector(".canvas");
+            const canvDaym = canvas.getContext("2d");
+            function createBall() {
+                canvDaym.beginPath();
+                canvDaym.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI);
+                canvDaym.fillStyle = "darkcyan";
+                canvDaym.fill();
+                canvDaym.stroke();
+            }
+
+            function crateRectangle() {
+                canvDaym.beginPath();
+                canvDaym.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+                canvDaym.stroke();
+            }
+
+            function clearCanvas() {
+                canvDaym.clearRect(0, 0, canvas.width, canvas.height);
+            }
+
+            function updateBallPosition() {
+                ball.x += ball.speedX;
+                ball.y += ball.speedY;
+
+                if (ball.x - ball.radius <= rectangle.x || ball.x + ball.radius >= rectangle.x + rectangle.width) {
+                    ball.speedX *= -1;
+                }
+
+                if (ball.y - ball.radius <= rectangle.y || ball.y + ball.radius >= rectangle.y + rectangle.height) {
+                    ball.speedY *= -1;
+                }
+            }
+
+
+
+            function animatCanves() {
+                clearCanvas();
+                crateRectangle();
+                createBall();
+                updateBallPosition();
+                requestAnimationFrame(animatCanves);
+            }
+
+            animatCanves();
+        });
+
+    </script>
+</body>
+
+</html>

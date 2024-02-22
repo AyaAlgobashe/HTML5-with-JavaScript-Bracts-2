@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        section {
+            width: 400px;
+            text-align: center;
+            height: 380px;
+            border: 2px solid black;
+            margin: 10px 50px;
+            float: left;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function () {
+            allimages = document.images;
+            left = document.getElementById('left');
+            right = document.getElementById('right');
+
+            // Event registration for every image
+            for (var i = 0; i < allimages.length; i++) {
+                allimages[i].addEventListener('dragstart', startdrag);
+                allimages[i].addEventListener('dragend', enddrag);
+            }
+
+            // Event registration for left section
+            left.addEventListener('drop', leftDropped);
+            left.addEventListener('dragenter', leftEnterdrag);
+            left.addEventListener('dragover', leftOverdrag);
+            left.addEventListener('dragleave', leftLeavedrag);
+
+            // Event registration for right section
+            right.addEventListener('drop', rightDropped);
+            right.addEventListener('dragenter', rightEnterdrag);
+            right.addEventListener('dragover', rightOverdrag);
+            right.addEventListener('dragleave', rightLeavedrag);
+        });
+
+        function startdrag(e) {
+            e.dataTransfer.setData('myimg', e.target.outerHTML);
+        }
+
+        function enddrag(e) {
+            e.preventDefault();
+            var mouseX = e.clientX;
+            var mouseY = e.clientY;
+
+            // Check if the dragend occurred within the left section's coordinates
+            var leftRect = left.getBoundingClientRect();
+            if (
+                mouseX >= leftRect.left &&
+                mouseX <= leftRect.right &&
+                mouseY >= leftRect.top &&
+                mouseY <= leftRect.bottom
+            ) {
+                leftEnddrag(e);
+            } else {
+                // Check if the dragend occurred within the right section's coordinates
+                var rightRect = right.getBoundingClientRect();
+                if (
+                    mouseX >= rightRect.left &&
+                    mouseX <= rightRect.right &&
+                    mouseY >= rightRect.top &&
+                    mouseY <= rightRect.bottom
+                ) {
+                    rightEnddrag(e);
+                }
+            }
+        }
+
+        function leftEnddrag(e) {
+            left.innerHTML += e.dataTransfer.getData('myimg');
+            // Hide the dragged image
+            e.target.style.display = "none";
+        }
+
+        function rightEnddrag(e) {
+            right.innerHTML += e.dataTransfer.getData('myimg');
+            // Hide the dragged image
+            e.target.style.display = "none";
+        }
+
+        function leftDropped(e) {
+            e.preventDefault();
+            left.innerHTML += e.dataTransfer.getData('myimg');
+        }
+
+        function rightDropped(e) {
+            e.preventDefault();
+            right.innerHTML += e.dataTransfer.getData('myimg');
+        }
+
+        function leftEnterdrag(e) {
+            e.preventDefault();
+        }
+
+        function rightEnterdrag(e) {
+            e.preventDefault();
+        }
+
+        function leftLeavedrag(e) {
+            e.preventDefault();
+            left.style.backgroundColor = "lightpink";
+        }
+
+        function rightLeavedrag(e) {
+            e.preventDefault();
+            right.style.backgroundColor = "lightpink";
+        }
+
+        function leftOverdrag(e) {
+            e.preventDefault();
+        }
+
+        function rightOverdrag(e) {
+            e.preventDefault();
+        }
+    </script>
+</head>
+
+<body>
+    <section id="left">
+
+    </section>
+    <section id="right">
+        <img src="1.jpg" data-stock="5" />
+        <img src="2.jpg" />
+        <img src="3.jpg" />
+        <img src="4.jpg" />
+        <img src="5.jpg" />
+        <img src="1.jpg" data-stock="5" />
+        <img src="2.jpg" />
+        <img src="3.jpg" />
+        <img src="4.jpg" />
+        <img src="5.jpg" />
+        
+    </section>
+</body>
+
+</html>

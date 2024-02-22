@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>drag and drop</title>
+        <style>
+            img{
+                width: 120px;
+                height: 100px;
+                border-radius: 10px;
+                border: 2px solid lightblue;
+            }
+            #section1 img:hover{
+                transition:transform 4s;
+                transform:scale(2) rotate(360deg);
+            }
+            div{
+                border:2px solid black;
+                border-radius: 10px;
+                background:linear-gradient(white,orange);
+                width: 80vw;
+                height: 60vh;
+                margin: 20px auto;
+                padding: 10px;
+            }
+            #section1{
+                border: 2px solid black;
+                border-radius: 10px;
+                padding: 20px;
+                background:linear-gradient(white,orange);
+                margin-bottom: 50px;
+            }
+             #section2{
+                border: 2px solid black;
+                border-radius: 10px;
+                padding: 20px;
+                background:linear-gradient(white,orange);
+                height:20vh;
+                
+            }
+
+        </style>
+        <script>
+            window.addEventListener('load', function () {
+                allimages = this.document.images;
+
+                left = this.document.getElementById('section2');
+                right = this.document.getElementById('section1');
+                //event registeration for every element 
+                // images : drag start | drag end 
+                for (var i = 0; i < allimages.length; i++) {
+                    allimages[i].addEventListener('dragstart', startdrag);
+                    allimages[i].addEventListener('dragend', enddrag);
+                }
+                // left : drop | enter | over
+                left.addEventListener('drop', dropped);
+                left.addEventListener('dragenter', enterdrag);
+                left.addEventListener('dragover', overdrag);
+
+                //right : leave 
+                right.addEventListener('dragleave', leavedrag);
+               
+
+
+
+
+
+
+
+            });//end of load
+            function startdrag(e) {
+            
+                e.dataTransfer.setData('myimg', e.target.outerHTML);
+            }
+            function enddrag(e) {
+                e.preventDefault();
+                e.target.style.display = "none";
+              
+            }
+            function dropped(e) {
+                e.preventDefault();
+                console.log("drop")
+                left.innerHTML += e.dataTransfer.getData('myimg');
+                
+            }
+            function enterdrag(e) {
+                e.preventDefault();
+                
+            }
+            function leavedrag(e) {
+                
+                e.preventDefault();
+                e.target.style.backgroundColor = "lightpink";
+            }
+            function overdrag(e) {
+                e.preventDefault();
+            }
+            function checkEmpty() {
+                    if (right.children.length == 0) {
+                        right.innerText="empty"
+                    } 
+                    // else {
+                    //     emptyText.style.display = "block";
+                    // }
+                }
+        </script>
+    </head>
+    <body>
+        <div>
+            <section id="section1">
+                <img src="1.jpg" >
+                <img src="2.jpg" >
+                <img src="3.jpg" >
+                <img src="4.jpg" >
+                <img src="5.jpg" >
+                <img src="1.jpg" >
+                <img src="2.jpg" >
+                <img src="3.jpg" >
+            </section>
+            <section id="section2"></section>
+        </div>
+    </body>
+</html>

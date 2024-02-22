@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+    <title>Create Squares on Click</title>
+    <style>
+      
+
+        .square {
+            width: 80px;
+            height: 80px;
+            background-color: rgb(141, 26, 26);
+            position: absolute;
+            cursor: url('https://via.placeholder.com/30x30/ff0000?text=+'), auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("click", function (event) {
+                createSquare(event.clientX, event.clientY);
+            });
+
+            function createSquare(x, y) {
+                var square = document.createElement("div");
+                square.className = "square";
+                square.style.left = x - square.offsetWidth / 2 + "px";
+                square.style.top = y - square.offsetHeight / 2 + "px";
+
+                document.body.appendChild(square);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
